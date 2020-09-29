@@ -1,3 +1,5 @@
+<!-- 
+#2. Muestre todos los jefes de las instalaciones del puerto con nombre `Mejillones'. -->
 
 <!-- SELECT *
 FROM jefe, personal,(SELECT instalaciones.iid, puertos.nombre
@@ -6,7 +8,6 @@ WHERE puertos.pid = pertenece.pid and
 instalaciones.iid = pertenece.iid and puertos.nombre = 'Mejillones') AS ppi
 WHERE jefe.rut = personal.rut and jefe.iid = ppi.iid; -->
 
-#2. Muestre todos los jefes de las instalaciones del puerto con nombre `Mejillones'.
 
 <?php include('../templates/header.html');   ?>
 

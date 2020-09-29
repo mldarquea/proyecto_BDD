@@ -1,5 +1,4 @@
-# 5. Muestre la edad promedio de los trabajadores de cada puerto.
-### da una tabla con todos los promedios, pero podríamos hacer que de el promedio de uno de los puertos.
+<!-- # 5. Muestre la edad promedio de los trabajadores de cada puerto. -->
 
 <?php include('../templates/header.html');   ?>
 
@@ -8,7 +7,7 @@
   <?php
   require("../config/conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
-  #$var = $_POST["nombre_puerto"];
+  #$var = $_POST["realizar_consulta"];
   $query = "SELECT ppi.nombre, AVG(personal.edad)
   FROM trabaja, personal,(SELECT instalaciones.iid, puertos.nombre
   FROM puertos, pertenece, instalaciones

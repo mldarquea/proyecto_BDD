@@ -1,4 +1,4 @@
-# 3. Muestre todos los puertos que tienen al menos un astillero.
+<!-- # 3. Muestre todos los puertos que tienen al menos un astillero. -->
 
 <?php include('../templates/header.html');   ?>
 
@@ -7,7 +7,7 @@
   <?php
   require("../config/conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
-  #$var = $_POST["nombre_puerto"];
+  #$var = $_POST["realizar_consulta"];
   $query = "SELECT Puertos.pid, Puertos.nombre
   FROM Astilleros, Pertenece, Puertos
   WHERE Astilleros.iid = pertenece.iid and puertos.pid = pertenece.pid;;"; 

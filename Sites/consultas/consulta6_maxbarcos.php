@@ -1,1 +1,1 @@
-# 6. Muestre el puerto que ha recibido más barcos en Agosto del 2020.
+<!-- # 6. Muestre el puerto que ha recibido más barcos en Agosto del 2020. -->

@@ -1,3 +1,5 @@
+<!-- 1. Muestre todos los puertos junto la ciudad a la que son asignados. -->
+
 <?php include('../templates/header.html');   ?>
 
 <body>
