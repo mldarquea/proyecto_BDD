@@ -83,9 +83,9 @@
   <br>
 
 </body>
-</html>
+</html>-->
 
-
+<img src="barco.png" alt="barco" width="920" height="512">
 
 <!-- 1. Muestre todos los puertos junto la ciudad a la que son asignados.
 2. Muestre todos los jefes de las instalaciones del puerto con nombre `Mejillones'.
