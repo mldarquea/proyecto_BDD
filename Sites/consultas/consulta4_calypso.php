@@ -28,7 +28,7 @@
     <tr>
       <th>Nombre Barco</th>
       <th>Ciudad</th>
-      <th>Número de atraques</th>
+      <th>Atraques</th>
     </tr>
   <?php
 
