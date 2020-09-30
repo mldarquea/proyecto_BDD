@@ -1,19 +1,18 @@
 <?php include('templates/header.html');   ?>
 
 <body>
-  <h1 align="center">Biblioteca Pokemón </h1>
-  <p style="text-align:center;">Aquí podrás encontrar información sobre pokemones.</p>
+  <h1 align="center">Biblioteca Puertos </h1>
+  <p style="text-align:center;">Aquí podrás encontrar información sobre los distintos Puertos, Astilleros y Gerencias.</p>
 
   <br>
 
-  <h3 align="center"> ¿Quieres buscar un Pokemón por tipo y/o nombre?</h3>
+<!-- 1. Muestre todos los puertos junto la ciudad a la que son asignados. -->
 
-  <form align="center" action="consultas/consulta_tipo_nombre.php" method="post">
-    Tipo:
-    <input type="text" name="tipo_elegido">
-    <br/>
-    Nombre:
-    <input type="text" name="nombre_pokemon">
+  <h3 align="center"> ¿Quieres buscar la ciudad de un puerto? </h3>
+
+  <form align="center" action="consultas/consulta1_ciudades.php" method="post">
+    Puerto:
+    <input type="text" name="nombre_puerto">
     <br/><br/>
     <input type="submit" value="Buscar">
   </form>
@@ -22,11 +21,13 @@
   <br>
   <br>
 
-  <h3 align="center"> ¿Quieres buscar un Pokemón por su ID?</h3>
+<!-- 
+#2. Muestre todos los jefes de las instalaciones del puerto con nombre `Mejillones'. -->
+  <h3 align="center"> ¿Quieres buscar los jefes de las instalaciones de algún puerto en particular?</h3>
 
-  <form align="center" action="consultas/consulta_stats.php" method="post">
-    Id:
-    <input type="text" name="id_elegido">
+  <form align="center" action="consultas/consulta2_jefes.php" method="post">
+    Puerto:
+    <input type="text" name="nombre_puerto">
     <br/><br/>
     <input type="submit" value="Buscar">
   </form>
@@ -35,45 +36,57 @@
   <br>
   <br>
 
-  <h3 align="center"> ¿Quieres conocer los Pokemones más altos que: ?</h3>
+<!-- # 3. Muestre todos los puertos que tienen al menos un astillero. -->
+  <h3 align="center"> ¿Quieres saber todos los puertos que tienen al menos un astillero? </h3>
+  <form align="center" action="consultas/consulta3_puertos.php" method="post">
+    Escribe sí:
+    <input type="text" name="realizar_consulta">
+    <br/><br/>
+    <input type="submit" value="Buscar">
+  </form>
 
-  <form align="center" action="consultas/consulta_altura.php" method="post">
-    Altura Mínima:
-    <input type="text" name="altura">
+  <br>
+  <br>
+  <br>
+
+<!-- #4. Muestre todas las veces en que el barco `Calypso' ha atracado en `Arica'. -->
+  <!-- <h3 align="center">¿Quieres saber cuantas veces el barco "Calypso" ha atracado en "Arica"?</h3>
+
+  <br>
+  <br>
+  <br>
+  <br> -->
+
+<!-- 
+ # 5. Muestre la edad promedio de los trabajadores de cada puerto. -->
+  <h3 align="center">¿Quieres saber la edad promedio de los trabajadores de algún puerto?</h3>
+  <form align="center" action="consultas/consulta5_edad.php" method="post">
+    Escribe sí:
+    <input type="text" name="realizar_consulta">
     <br/><br/>
     <input type="submit" value="Buscar">
   </form>
   <br>
   <br>
   <br>
+  <br>
 
-  <h3 align="center">¿Quieres buscar todos los pokemones por tipo?</h3>
-
-  <?php
-  #Primero obtenemos todos los tipos de pokemones
-  require("config/conexion.php");
-  $result = $db -> prepare("SELECT DISTINCT tipo FROM pokemones;");
-  $result -> execute();
-  $dataCollected = $result -> fetchAll();
-  ?>
-
-  <form align="center" action="consultas/consulta_tipo.php" method="post">
-    Seleccinar un tipo:
-    <select name="tipo">
-      <?php
-      #Para cada tipo agregamos el tag <option value=value_of_param> visible_value </option>
-      foreach ($dataCollected as $d) {
-        echo "<option value=$d[0]>$d[0]</option>";
-      }
-      ?>
-    </select>
-    <br><br>
-    <input type="submit" value="Buscar por tipo">
-  </form>
+ <!-- # 6. Muestre el puerto que ha recibido más barcos en Agosto del 2020. -->
+ <!-- <h3 align="center">¿Quieres saber el puerto que ha recibido más barcos en Agosto del 2020?</h3>
 
   <br>
   <br>
   <br>
   <br>
+
 </body>
-</html>
+</html> -->
+
+
+
+<!-- 1. Muestre todos los puertos junto la ciudad a la que son asignados.
+2. Muestre todos los jefes de las instalaciones del puerto con nombre `Mejillones'.
+3. Muestre todos los puertos que tienen al menos un astillero.
+4. Muestre todas las veces en que el barco `Calypso' ha atracado en `Arica'.
+5. Muestre la edad promedio de los trabajadores de cada puerto.
+6. Muestre el puerto que ha recibido mas barcos en Agosto del 2020. -->
