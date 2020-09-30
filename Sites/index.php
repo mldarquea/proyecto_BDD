@@ -75,7 +75,7 @@
 </body>
 </html>
 
-<img src="puerto.png" alt="barco" width="500" height="500">
+<img src="puerto.png" alt="barco" width="400" height="400">
 
  <!-- # 6. Muestre el puerto que ha recibido más barcos en Agosto del 2020.
  <!-- <h3 align="center">¿Quieres saber el puerto que ha recibido más barcos en Agosto del 2020?</h3>

@@ -3,7 +3,7 @@
 <?php include('../templates/header.html');   ?>
 
 <body>
-
+  <body background="mar.jpg">
   <?php
   require("../config/conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
