@@ -39,8 +39,8 @@
 <!-- # 3. Muestre todos los puertos que tienen al menos un astillero. -->
   <h3 align="center"> ¿Quieres saber todos los puertos que tienen al menos un astillero? </h3>
   <form align="center" action="consultas/consulta3_puertos.php" method="post">
-    Escribe sí:
-    <input type="text" name="realizar_consulta">
+    <!-- Escribe sí:
+    <input type="text" name="realizar_consulta"> -->
     <br/><br/>
     <input type="submit" value="Buscar">
   </form>
@@ -61,8 +61,8 @@
  # 5. Muestre la edad promedio de los trabajadores de cada puerto. -->
   <h3 align="center">¿Quieres saber la edad promedio de los trabajadores de algún puerto?</h3>
   <form align="center" action="consultas/consulta5_edad.php" method="post">
-    Escribe sí:
-    <input type="text" name="realizar_consulta">
+    <!-- Escribe sí:
+    <input type="text" name="realizar_consulta"> -->
     <br/><br/>
     <input type="submit" value="Buscar">
   </form>
