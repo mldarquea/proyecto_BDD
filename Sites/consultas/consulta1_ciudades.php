@@ -3,12 +3,12 @@
 <?php include('../templates/header.html');   ?>
 
 <body>
-
+  <body background="mar.jpg">
   <?php
   require("../config/conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
   $var = $_POST["nombre_puerto"];
-  $query = "SELECT puertos.pid, puertos.nombre, esta.ciudad FROM puertos INNER JOIN esta ON puertos.pid = esta.pid WHERE puertos.nombre = '$var';";
+  $query = "SELECT puertos.pid, puertos.nombre, esta.ciudad FROM puertos INNER JOIN esta ON puertos.pid = esta.pid WHERE UPPER(puertos.nombre) = UPPER('$var');";
 
   $result = $db -> prepare($query);
   $result -> execute();
