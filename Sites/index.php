@@ -4,7 +4,7 @@
   <h1 align="center">Biblioteca Puertos </h1>
   <p style="text-align:center;">Aquí podrás encontrar información sobre los distintos Puertos, Astilleros y Gerencias.</p>
   <img src="barco.png" alt="barco" width="500" height="500">
-  <body background="mar.jpg!d" opacity: 0.5>
+  <body background="mar.jpg">
   <br>
 
 <!-- 1. Muestre todos los puertos junto la ciudad a la que son asignados. -->
@@ -74,6 +74,8 @@
 
 </body>
 </html>
+
+<img src="puerto.png" alt="barco" width="500" height="500">
 
  <!-- # 6. Muestre el puerto que ha recibido más barcos en Agosto del 2020.
  <!-- <h3 align="center">¿Quieres saber el puerto que ha recibido más barcos en Agosto del 2020?</h3>
