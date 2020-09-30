@@ -51,12 +51,16 @@
   <br>
 
 <!-- #4. Muestre todas las veces en que el barco `Calypso' ha atracado en `Arica'. -->
-  <!-- <h3 align="center">¿Quieres saber cuantas veces el barco "Calypso" ha atracado en "Arica"?</h3>
+  <h3 align="center">¿Quieres saber cuantas veces el barco "Calypso" ha atracado en "Arica"?</h3>
+  <form align="center" action="consultas/consulta4_calypso.php" method="post">
 
+    <br/><br/>
+    <input type="submit" value="Buscar">
+  </form>
   <br>
   <br>
   <br>
-  <br> -->
+  <br>
 
 <!-- 
  # 5. Muestre la edad promedio de los trabajadores de cada puerto. -->
@@ -72,21 +76,25 @@
   <br>
   <br>
 
-</body>
-</html>
+
+<!-- # 6. Muestre el puerto que ha recibido más barcos en Agosto del 2020. -->
+ <h3 align="center">¿Quieres saber el puerto que ha recibido más barcos en Agosto del 2020?</h3>
+
+ <form align="center" action="consultas/consulta6_maxbarcos.php" method="post">
+    <!-- Escribe sí:
+    <input type="text" name="realizar_consulta"> -->
+    <br/><br/>
+    <input type="submit" value="Buscar">
+  </form>
+  <br>
+  <br>
+  <br>
+  <br>
+
 
 <img src="puerto.png" alt="barco" width="400" height="400">
-
- <!-- # 6. Muestre el puerto que ha recibido más barcos en Agosto del 2020.
- <!-- <h3 align="center">¿Quieres saber el puerto que ha recibido más barcos en Agosto del 2020?</h3>
-
-  <br>
-  <br>
-  <br>
-  <br>
-
 </body>
-</html>-->
+</html>
 
 
 <!-- 1. Muestre todos los puertos junto la ciudad a la que son asignados.
