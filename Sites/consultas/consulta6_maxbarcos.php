@@ -8,17 +8,14 @@
   require("../config/conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
   #$var = $_POST["realizar_consulta"];
-  $query = "SELECT MAX(parte3.count) FROM (SELECT parte2.nombre, COUNT (*) FROM 
-  (SELECT parte1.iid, parte1.patente, puertos.nombre, parte1.atraque 
-  FROM pertenece, puertos, 
-  (SELECT upam.iid, barcos.patente, barcos.pais, permisos.per_id, permisos.atraque
-  FROM barcos, sobre, permisos, instalaciones,
-  (SELECT * FROM para_a UNION SELECT ALL * FROM para_m) 
-  AS upam WHERE barcos.patente = sobre.patente and sobre.per_id = permisos.per_id
-  and upam.iid = instalaciones.iid and permisos.per_id = upam.per_id 
-  and permisos.atraque >= '2020-08-01' and permisos.atraque <= '2020-08-31') AS parte1 
-  WHERE parte1.iid = pertenece.iid and pertenece.pid = puertos.pid) AS parte2 GROUP BY parte2.nombre) 
-  AS parte3;"; 
+  $query = "SELECT * FROM (SELECT  puertos.nombre, COUNT(puertos.pid) as conteo
+  FROM Puertos, Pertenece, (SELECT fechaOK.per_id, instalaciones.iid, fechaOK.atraque 
+  FROM Instalaciones, (SELECT * FROM para_a UNION SELECT ALL * FROM para_m) AS upam,
+  (SELECT * FROM Permisos WHERE permisos.atraque >= '2020-08-01' and permisos.atraque <= '2020-08-31') as fechaOK
+  WHERE upam.per_id = fechaOK.per_id and upam.iid=instalaciones.iid) as perOK
+  WHERE perOK.iid = pertenece.iid and puertos.pid = pertenece.pid
+  GROUP BY puertos.nombre) as contador
+  LIMIT 1;"; 
 
   $result = $db -> prepare($query);
   $result -> execute();
@@ -27,12 +24,13 @@
 
   <table>
     <tr>
-      <th>Maximo</th>
+      <th>Nombre Puerto</th>
+      <th>Cantidad de Barcos</th>
     </tr>
   <?php
 
   foreach ($dataCollected as $p) {
-    echo "<tr> <td>$p[0]</td> </tr>";
+    echo "<tr> <td>$p[0]</td> <td>$p[1]</td> </tr>";
   }
   ?>
   </table>
