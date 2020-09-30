@@ -24,11 +24,11 @@
 
 <!-- 
 #2. Muestre todos los jefes de las instalaciones del puerto con nombre `Mejillones'. -->
-  <h3 align="center"> ¿Quieres buscar los jefes de las instalaciones de algún puerto en particular?</h3>
+  <h3 align="center"> ¿Quieres buscar los jefes de las instalaciones del puerto Mejillones?</h3>
 
   <form align="center" action="consultas/consulta2_jefes.php" method="post">
-    Puerto:
-    <input type="text" name="nombre_puerto">
+    <!-- Puerto:
+    <input type="text" name="nombre_puerto"> -->
     <br/><br/>
     <input type="submit" value="Buscar">
   </form>
