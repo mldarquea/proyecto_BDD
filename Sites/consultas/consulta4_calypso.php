@@ -26,13 +26,14 @@
 
   <table>
     <tr>
-      <th>Barco</th>
-      <th>Número de veces</th>
+      <th>Nombre Barco</th>
+      <th>Ciudad</th>
+      <th>Número de atraques</th>
     </tr>
   <?php
 
   foreach ($dataCollected as $p) {
-    echo "<tr> <td>$p[0]</td> <td>$p[1]</td> </tr>";
+    echo "<tr> <td>$p[2]</td> <td>$p[3]</td> <td>$p[5]</td> </tr>";
   }
   ?>
   </table>

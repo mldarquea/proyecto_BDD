@@ -9,7 +9,7 @@
   require("../config/conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
   #$var = $_POST["realizar_consulta"];
-  $query = "SELECT Puertos.pid, Puertos.nombre
+  $query = "SELECT DISTINCT Puertos.pid, Puertos.nombre
   FROM Astilleros, Pertenece, Puertos
   WHERE Astilleros.iid = pertenece.iid and puertos.pid = pertenece.pid;;"; 
 
