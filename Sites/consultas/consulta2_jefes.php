@@ -22,7 +22,7 @@ WHERE jefe.rut = personal.rut and jefe.iid = ppi.iid; -->
   (SELECT instalaciones.iid, puertos.nombre
   FROM puertos, pertenece, instalaciones
   WHERE puertos.pid = pertenece.pid 
-  and instalaciones.iid = pertenece.iid and puerto.nombre = '%$var%') AS ppi
+  and instalaciones.iid = pertenece.iid and puertos.nombre = '%$var%') AS ppi
   WHERE jefe.rut = personal.rut and jefe.iid = ppi.iid;";
 
   $result = $db -> prepare($query);

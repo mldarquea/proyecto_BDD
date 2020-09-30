@@ -8,7 +8,7 @@
   require("../config/conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
   $var = $_POST["nombre_puerto"];
-  $query = "SELECT puerto.pid, puerto.nombre, esta.ciudad FROM puertos INNER JOIN esta ON puertos.pid = esta.pid WHERE puerto.nombre = '$var';";
+  $query = "SELECT puertos.pid, puertos.nombre, esta.ciudad FROM puertos INNER JOIN esta ON puertos.pid = esta.pid WHERE puertos.nombre = '$var';";
 
   $result = $db -> prepare($query);
   $result -> execute();
