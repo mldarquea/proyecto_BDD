@@ -17,12 +17,12 @@ WHERE jefe.rut = personal.rut and jefe.iid = ppi.iid; -->
   <?php
   require("../config/conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
-  $var = $_POST["nombre_puerto"];
+  $var1 = $_POST["nombre_puerto"];
   $query = "SELECT personal.rut, personal.nombre, personal.edad, personal.sexo FROM jefe, personal,
   (SELECT instalaciones.iid, puertos.nombre
   FROM puertos, pertenece, instalaciones
   WHERE puertos.pid = pertenece.pid 
-  and instalaciones.iid = pertenece.iid and puertos.nombre = '%$var%') AS ppi
+  and instalaciones.iid = pertenece.iid and puertos.nombre = '%$var1%') AS ppi
   WHERE jefe.rut = personal.rut and jefe.iid = ppi.iid;";
 
   $result = $db -> prepare($query);
