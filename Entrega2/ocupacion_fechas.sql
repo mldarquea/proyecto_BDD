@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION
 ocupacion_fechas (t1 date, t2 date)
-RETURNS TABLE (muelles.iid int, muelles.capacidad int, permisos.atraque) AS $$
+RETURNS TABLE (iid int, capacidad int, atraque) AS $$
 BEGIN
 RETURN QUERY EXECUTE 'SELECT muelles.iid, muelles.capacidad, permisos.atraque
 		FROM muelles, para_m, permisos
