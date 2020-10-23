@@ -9,6 +9,7 @@ DECLARE
 
 BEGIN
 	CREATE TEMP TABLE fecha_ocupada(iid int, capacidad int, fecha date, cantidad int);
+	CREATE TEMP TABLE fecha_ocupada2(iid int, capacidad int, fecha date, cantidad int);
 
 	FOR tupla in SELECT * FROM (SELECT A.iid, A.capacidad, permisos.per_id,permisos.atraque,permisos_astilleros.salida
 FROM para_a,permisos_astilleros,permisos,(SELECT instalaciones.iid, instalaciones.capacidad
@@ -31,11 +32,11 @@ FROM instalaciones, muelles WHERE instalaciones.iid = muelles.iid) as M
 WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
 					WHERE Inter.atraque  >= $1 and Inter.atraque <= $2 
 	LOOP
-	INSERT INTO fecha_ocupada VALUES(tupla2.iid,tupla2.capacidad,tupla2.atraque, 1);
+	INSERT INTO fecha_ocupada2 VALUES(tupla2.iid,tupla2.capacidad,tupla2.atraque, 1);
 	END LOOP;
 
 RETURN QUERY 
-SELECT * FROM fecha_ocupada;
-DROP TABLE fecha_ocupada;
+SELECT * FROM fecha_ocupada2;
+DROP TABLE fecha_ocupada2;
 END;
 $$ language plpgsql;
