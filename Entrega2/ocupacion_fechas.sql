@@ -18,7 +18,7 @@ BEGIN
 	menor := intervalo.atraque;
 	mayor := intervalo.salida;
 	while menor <= mayor: 
-		INSERT INTO fecha_ocupada VALUES(tupla.iid,tupla.menor, 1);
+		INSERT INTO fecha_ocupada VALUES(tupla.iid,tupla.menor, 1)
 		menor = DATEADD(day, 1, menor)
 	END LOOP;
 
