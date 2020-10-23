@@ -8,7 +8,6 @@ DECLARE
 	mayor DATE;
 
 BEGIN
-	DROP TABLE fecha_ocupada;
 	CREATE TEMP TABLE fecha_ocupada(iid int, capacidad int, fecha date, cantidad int);
 
 	FOR tupla in SELECT * FROM (SELECT A.iid, A.capacidad, permisos.per_id,permisos.atraque,permisos_astilleros.salida
@@ -26,7 +25,7 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
 	END LOOP;
 	END LOOP;
 
-	FOR tupla2 in SELECT * FROM (SELECT M.iid, M.capacidad, permisos.per_id,permisos.atraque
+	FOR tupla2 in SELECT * FROM (SELECT M.iid, M.capacidad, permisos.per_id,cast(permisos.atraque as date)
 FROM para_m,permisos,(SELECT instalaciones.iid, instalaciones.capacidad
 FROM instalaciones, muelles WHERE instalaciones.iid = muelles.iid) as M
 WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS I
