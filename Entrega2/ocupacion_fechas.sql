@@ -11,9 +11,9 @@ BEGIN
 
 	FOR tupla in SELECT * FROM (SELECT permisos.per_id, astilleros.iid, instalaciones.capacidad, cast(permisos.atraque as date), cast(permisos_astilleros.salida as date) 
 					FROM Permisos, Astilleros, Instalaciones, Para_a, Permisos_astilleros
-					WHERE permisos.per_id = permisos_astilleros.per_id and permisos_astilleros.per_id = para_a.per_id and permisos.per_id = para_a.per_id and astilleros.iid = instalaciones.iid and astilleros.iid = para_a.iid and instalaciones.iid =para_a.iid
-					and permisos.atraque  >= $1 and permisos_astilleros.salida  >= $1 and permisos.atraque <= $2  and permisos_astilleros.salida <= $2 ) AS Intervalo
-
+					WHERE permisos.per_id = permisos_astilleros.per_id and permisos_astilleros.per_id = para_a.per_id and permisos.per_id = para_a.per_id and astilleros.iid = instalaciones.iid 
+					and astilleros.iid = para_a.iid and instalaciones.iid = para_a.iid) AS Intervalo
+					WHERE intervalo.atraque  >= $1 and intervalo.salida <= $2 
 	LOOP
 	menor := intervalo.atraque;
 	mayor := intervalo.salida;
