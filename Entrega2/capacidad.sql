@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION
-ocupacion_fechas(t1 date, t2 date)
-RETURNS TABLE (iid int, fecha date,cantidad int) AS $$
+capacidad(t1 date, t2 date)
+RETURNS TABLE (iid int, capacidad int, fecha date,cantidad int) AS $$
 DECLARE
 	tupla RECORD;
 	tupla2 RECORD;
@@ -8,7 +8,7 @@ DECLARE
 	mayor DATE;
 
 BEGIN
-	CREATE TEMP TABLE fecha_ocupada(iid int, fecha date, cantidad int);
+	CREATE TEMP TABLE fecha_o(iid int, capacidad int, fecha date, cantidad int);
 
 	FOR tupla in SELECT * FROM (SELECT A.iid, A.capacidad, permisos.per_id,permisos.atraque,permisos_astilleros.salida
 FROM para_a,permisos_astilleros,permisos,(SELECT instalaciones.iid, instalaciones.capacidad
@@ -20,7 +20,7 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
 	mayor := tupla.salida;
 	while menor <= mayor
 	LOOP
-	INSERT INTO fecha_ocupada VALUES(tupla.iid, menor, 1);
+	INSERT INTO fecha_o VALUES(tupla.iid, tupla.capacidad, menor, 1);
 	menor = menor + 1;
 	END LOOP;
 	END LOOP;
@@ -31,11 +31,11 @@ FROM instalaciones, muelles WHERE instalaciones.iid = muelles.iid) as M
 WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
 					WHERE Inter.atraque  >= $1 and Inter.atraque <= $2 
 	LOOP
-	INSERT INTO fecha_ocupada2 VALUES(tupla2.iid,tupla2.atraque, 1);
+	INSERT INTO fecha_o VALUES(tupla2.iid,tupla2.capacidad, tupla2.atraque, 1);
 	END LOOP;
 
 RETURN QUERY 
-SELECT * FROM fecha_ocupada;
-DROP TABLE fecha_ocupada;
+SELECT * FROM fecha_o;
+DROP TABLE fecha_o;
 END;
 $$ language plpgsql;
