@@ -9,11 +9,11 @@ DECLARE
 BEGIN
 	CREATE TEMP TABLE fecha_ocupada(iid int, fecha date, cantidad int);
 
-	FOR tupla in SELECT * FROM (SELECT permisos.per_id, astilleros.iid, instalaciones.capacidad, cast(permisos.atraque as date), cast(permisos_astilleros.salida as date) 
-					FROM Permisos, Astilleros, Instalaciones, Para_a, Permisos_astilleros
-					WHERE permisos.per_id = permisos_astilleros.per_id and permisos_astilleros.per_id = para_a.per_id and permisos.per_id = para_a.per_id and astilleros.iid = instalaciones.iid 
-					and astilleros.iid = para_a.iid and instalaciones.iid = para_a.iid) AS Intervalo
-					WHERE intervalo.atraque  >= $1 and intervalo.salida <= $2 
+	FOR tupla in SELECT * FROM (SELECT A.iid, A.capacidad, permisos.per_id,permisos.atraque,permisos_astilleros.salida
+FROM para_a,permisos_astilleros,permisos,(SELECT instalaciones.iid, instalaciones.capacidad
+FROM instalaciones, astilleros WHERE instalaciones.iid = astilleros.iid) as A
+WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and permisos.per_id = permisos_astilleros.per_id) AS I
+					WHERE I.atraque  >= $1 and I.salida <= $2 
 	LOOP
 	menor := intervalo.atraque;
 	mayor := intervalo.salida;
