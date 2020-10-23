@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION
-ocupacion (t1 date, t2 date)
+ocupacion_fechas(t1 date, t2 date)
 RETURNS TABLE (iid int, capacidad int, atraque timestamp) AS $$
 DECLARE
 	tupla RECORD;
