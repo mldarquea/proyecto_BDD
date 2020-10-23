@@ -19,7 +19,7 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
 	mayor := tupla.salida;
 	while menor <= mayor
 	LOOP
-	INSERT INTO fecha_ocupada VALUES(tupla.iid,tupla.atraque, 1);
+	INSERT INTO fecha_ocupada VALUES(tupla.iid,menor, 1);
 	menor = menor + 1;
 	END LOOP;
 	END LOOP;
