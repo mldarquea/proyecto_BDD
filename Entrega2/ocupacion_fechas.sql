@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION
 ocupacion_fechas(t1 date, t2 date)
-RETURNS TABLE (iid int, fecha date,cantidad int,) AS $$
+RETURNS TABLE (iid int, fecha date,cantidad int) AS $$
 DECLARE
 	tupla RECORD;
 	menor DATE;
