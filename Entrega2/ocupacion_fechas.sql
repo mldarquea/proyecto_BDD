@@ -15,7 +15,13 @@ FROM instalaciones, astilleros WHERE instalaciones.iid = astilleros.iid) as A
 WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and permisos.per_id = permisos_astilleros.per_id) AS I
 					WHERE I.atraque  >= $1 and I.salida <= $2 
 	LOOP
-	INSERT INTO fecha_ocupada VALUES(tupla.iid,tupla.atraque, 1);
+	menor := I.atraque;
+	mayor := I.salida;
+	WHILE menor <= mayor
+	BEGIN
+		INSERT INTO fecha_ocupada VALUES(tupla.iid,tupla.atraque, 1);
+		menor = DATEADD(day, 1, menor);
+	END;
 	END LOOP;
 
 RETURN QUERY 
