@@ -28,8 +28,8 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
 	FOR tupla2 in SELECT * FROM (SELECT M.iid, M.capacidad, permisos.per_id,cast(permisos.atraque as date)
 FROM para_m,permisos,(SELECT instalaciones.iid, instalaciones.capacidad
 FROM instalaciones, muelles WHERE instalaciones.iid = muelles.iid) as M
-WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS I
-					WHERE I.atraque  >= $1 and I.atraque <= $2 
+WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
+					WHERE Inter.atraque  >= $1 and Inter.atraque <= $2 
 	LOOP
 	INSERT INTO fecha_ocupada VALUES(tupla2.iid,tupla2.capacidad,tupla2.atraque, 1);
 	END LOOP;
