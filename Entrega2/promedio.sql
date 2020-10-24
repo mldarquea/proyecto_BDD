@@ -41,7 +41,7 @@ SELECT prom.iid, AVG(prom.promedio) FROM
 FROM fecha_o
 GROUP BY fecha_o.iid, fecha_o.capacidad, fecha_o.fecha) AS T
 WHERE T.suma < T.capacidad) AS prom
-GROUP BY prom.iid, prom.fecha, prom.promedio;
+GROUP BY prom.iid,  prom.promedio;
 DROP TABLE fecha_o;
 END;
 $$ language plpgsql;
