@@ -35,9 +35,11 @@ WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
 	END LOOP;
 
 RETURN QUERY 
-SELECT DISTINCT fecha_o.iid, fecha_o.capacidad, fecha_o.fecha, sum(fecha_o.cantidad)
+SELECT * FROM
+(SELECT DISTINCT fecha_o.iid, fecha_o.capacidad, fecha_o.fecha, sum(fecha_o.cantidad) AS suma
 FROM fecha_o
-GROUP BY fecha_o.iid, fecha_o.capacidad, fecha_o.fecha;
+GROUP BY fecha_o.iid, fecha_o.capacidad, fecha_o.fecha) AS T
+WHERE T.suma < T.capacidad;
 DROP TABLE fecha_o;
 END;
 $$ language plpgsql;
