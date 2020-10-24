@@ -33,7 +33,7 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
 FROM fecha_o
 GROUP BY fecha_o.iid, fecha_o.capacidad, fecha_o.fecha) AS T
 WHERE T.suma < T.capacidad
-LIMIT 1);
+LIMIT 1)
     LOOP
     per_id := SELECT FLOOR(RAND()*(3000-900)+900);
     INSERT INTO sobre VALUES(per_id,$4);
