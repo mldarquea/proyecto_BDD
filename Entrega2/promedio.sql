@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION
-promedio(t1 date, t2 date)
+promedio(t1 date, t2 date, t3 varchar(50))
 RETURNS TABLE (iid int, promedio NUMERIC) AS $$
 DECLARE
 	tupla RECORD;
