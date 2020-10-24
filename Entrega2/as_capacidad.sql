@@ -28,7 +28,7 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
 	END LOOP;
 	END LOOP;
 
-    FOR tupla_random in SELECT (RANDOM()*(900)+1000)  
+    FOR tupla_random in SELECT FLOOR((RANDOM()*(900)+1000)) 
     LOOP
     per_id := tupla_random;
     END LOOP;
