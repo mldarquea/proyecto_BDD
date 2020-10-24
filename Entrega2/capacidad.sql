@@ -26,7 +26,7 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
 	END LOOP;
 
 	FOR tupla2 in SELECT * FROM (SELECT M.iid, M.capacidad, M.nombre, permisos.per_id,cast(permisos.atraque as date)
-FROM para_m,permisos,(SELECT instalaciones.iid, instalaciones.capacidad
+FROM para_m,permisos,(SELECT instalaciones.iid, instalaciones.capacidad, puertos.nombre
 FROM instalaciones, muelles, pertenece, puertos WHERE  puertos.pid = pertenece.pid and  pertenece.iid = instalaciones.iid and instalaciones.iid = muelles.iid) as M
 WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
 					WHERE Inter.atraque  >= $1 and Inter.atraque <= $2 and Inter.nombre = $3
