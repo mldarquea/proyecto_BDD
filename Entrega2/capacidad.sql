@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION
 capacidad(t1 date, t2 date)
-RETURNS TABLE (iid int, capacidad int, fecha date,cantidad int) AS $$
+RETURNS TABLE (iid int, capacidad int, fecha date,cantidad bigint) AS $$
 DECLARE
 	tupla RECORD;
 	tupla2 RECORD;
