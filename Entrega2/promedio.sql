@@ -8,7 +8,7 @@ DECLARE
 	mayor DATE;
 
 BEGIN
-	CREATE TEMP TABLE fecha_o(iid int, capacidad int, fecha date, cantidad int);
+	CREATE TEMP TABLE fecha_o(iid int, capacidad int, fecha date, cantidad float);
 
 	FOR tupla in SELECT * FROM (SELECT A.iid, A.capacidad, A.nombre, permisos.per_id,permisos.atraque,permisos_astilleros.salida
 FROM para_a,permisos_astilleros,permisos,(SELECT instalaciones.iid, instalaciones.capacidad, puertos.nombre
