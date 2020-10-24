@@ -35,7 +35,7 @@ GROUP BY fecha_o.iid, fecha_o.capacidad, fecha_o.fecha) AS T
 WHERE T.suma < T.capacidad
 LIMIT 1)
     LOOP
-    per_id := SELECT FLOOR(RAND()*(3000-900)+900);
+    per_id := FLOOR(RAND()*(3000-900)+900);
     INSERT INTO sobre VALUES(per_id,$4);
     INSERT INTO permisos VALUES(per_id,$1);
     INSERT INTO permisos_astilleros VALUES(per_id,$2);
