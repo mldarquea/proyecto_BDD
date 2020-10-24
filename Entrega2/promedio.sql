@@ -35,7 +35,7 @@ WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
 	END LOOP;
 
 RETURN QUERY 
-SELECT prom.iid, AVG(prom.promedio)
+SELECT prom.iid, AVG(prom.promedio) FROM
 (SELECT T.iid, T.capacidad, T.fecha, ( T.suma * 100/T.capacidad ) AS Promedio FROM
 (SELECT DISTINCT fecha_o.iid, fecha_o.capacidad, fecha_o.fecha, sum(fecha_o.cantidad) AS suma
 FROM fecha_o
