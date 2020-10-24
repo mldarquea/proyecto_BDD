@@ -35,7 +35,7 @@ WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
 	END LOOP;
 
 RETURN QUERY 
-SELECT fecha_o.iid, fecha_o.capacidad, fecha_o.fecha
+SELECT fecha_o.iid, fecha_o.capacidad, fecha_o.fecha, fecha_o.cantidad
 FROM fecha_o
 ORDER BY fecha_o.iid;
 DROP TABLE fecha_o;
