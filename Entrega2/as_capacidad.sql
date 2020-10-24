@@ -22,16 +22,16 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
 	mayor := tupla.salida;
 	while menor <= mayor
 	LOOP
-	INSERT INTO fecha_o VALUES(tupla.iid, tupla.capacidad, menor, 1);
+	INSERT INTO a_o VALUES(tupla.iid, tupla.capacidad, menor, 1);
 	menor = menor + 1;
 	END LOOP;
 	END LOOP;
 
 ------- Se muestran todas las instalaciones con capacidad y se registra un permiso para el primero disponible
     FOR tupla2 in (SELECT * FROM
-(SELECT DISTINCT fecha_o.iid, fecha_o.capacidad, fecha_o.fecha, sum(fecha_o.cantidad) AS suma
-FROM fecha_o
-GROUP BY fecha_o.iid, fecha_o.capacidad, fecha_o.fecha) AS T
+(SELECT DISTINCT a_o.iid, a_o.capacidad, a_o.fecha, sum(a_o.cantidad) AS suma
+FROM a_o
+GROUP BY a_o.iid, a_o.capacidad, a_o.fecha) AS T
 WHERE T.suma < T.capacidad
 LIMIT 1)
     LOOP
@@ -44,10 +44,10 @@ LIMIT 1)
 
 RETURN QUERY 
 SELECT * FROM
-(SELECT DISTINCT fecha_o.iid, fecha_o.capacidad, fecha_o.fecha, sum(fecha_o.cantidad) AS suma
-FROM fecha_o
-GROUP BY fecha_o.iid, fecha_o.capacidad, fecha_o.fecha) AS T
+(SELECT DISTINCT a_o.iid, a_o.capacidad, a_o.fecha, sum(a_o.cantidad) AS suma
+FROM a_o
+GROUP BY a_o.iid, a_o.capacidad, a_o.fecha) AS T
 WHERE T.suma < T.capacidad;
-DROP TABLE fecha_o;
+DROP TABLE a_o;
 END;
 $$ language plpgsql;
