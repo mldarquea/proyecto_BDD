@@ -46,4 +46,4 @@ DROP TABLE fecha_o;
 END;
 $$ language plpgsql;
 
--- saca promedio entero solo de dias que entran a la consulta
+-- si promedio es 0 no los muestra
