@@ -35,9 +35,9 @@ WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
 	END LOOP;
 
 RETURN QUERY 
-SELECT fecha_o.iid, fecha_o.capacidad, fecha_o.fecha, fecha_o.cantidad
+SELECT fecha_o.iid, fecha_o.capacidad, fecha_o.fecha, sum(fecha_o.cantidad)
 FROM fecha_o
-ORDER BY fecha_o.iid;
+GROUP BY fecha_o.iid, fecha_o.capacidad, fecha_o.fecha;
 DROP TABLE fecha_o;
 END;
 $$ language plpgsql;
