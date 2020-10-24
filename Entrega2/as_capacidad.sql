@@ -4,6 +4,7 @@ RETURNS TABLE (iid int, capacidad int, fecha date,cantidad bigint) AS $$
 DECLARE
 	tupla RECORD;
     tupla2 RECORD;
+    tupla_random RECORD;
 	menor DATE;
 	mayor DATE;
     per_id int;
@@ -27,6 +28,11 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
 	END LOOP;
 	END LOOP;
 
+    FOR tupla_random in SELECT FLOOR(RAND()*(900)+1000) as random
+    LOOP
+    per_id := tupla_random.random;
+    END LOOP;
+    
 ------- Se muestran todas las instalaciones con capacidad y se registra un permiso para el primero disponible
     FOR tupla2 in (SELECT * FROM
 (SELECT DISTINCT a_o.iid, a_o.capacidad, a_o.fecha, sum(a_o.cantidad) AS suma
@@ -35,7 +41,6 @@ GROUP BY a_o.iid, a_o.capacidad, a_o.fecha) AS T
 WHERE T.suma < T.capacidad
 LIMIT 1)
     LOOP
-    per_id := rand(900,3000);
     INSERT INTO sobre VALUES(per_id,$4);
     INSERT INTO permisos VALUES(per_id,$1);
     INSERT INTO permisos_astilleros VALUES(per_id,$2);
