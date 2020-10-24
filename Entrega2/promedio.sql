@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION
 promedio(t1 date, t2 date)
-RETURNS TABLE (iid int, capacidad int, fecha date,cantidad bigint) AS $$
+RETURNS TABLE (iid int, promedio NUMERIC) AS $$
 DECLARE
 	tupla RECORD;
 	tupla2 RECORD;
