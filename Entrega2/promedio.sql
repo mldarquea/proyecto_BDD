@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION
-capacidad(t1 date, t2 date, t3 varchar(50))
-RETURNS TABLE (iid int, capacidad int, fecha date,cantidad bigint) AS $$
+promedio(t1 date, t2 date)
+RETURNS TABLE (iid int, promedio NUMERIC) AS $$
 DECLARE
 	tupla RECORD;
 	tupla2 RECORD;
