@@ -48,3 +48,5 @@ DROP TABLE m_o;
 DROP TABLE m_s;
 END;
 $$ language plpgsql;
+
+------------revisar casos vacíos
