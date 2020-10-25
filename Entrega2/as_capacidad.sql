@@ -54,5 +54,6 @@ FROM a_o
 GROUP BY a_o.iid, a_o.capacidad, a_o.fecha) AS T
 WHERE T.suma < T.capacidad;
 DROP TABLE a_o;
+DROP TABLE a_s;
 END;
 $$ language plpgsql;
