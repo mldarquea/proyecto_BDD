@@ -40,11 +40,11 @@ LIMIT 1)
 
 RETURN QUERY 
 SELECT * FROM
-(SELECT DISTINCT a_o.iid, a_o.capacidad, a_o.fecha, sum(a_o.cantidad) AS suma
-FROM a_o
-GROUP BY a_o.iid, a_o.capacidad, a_o.fecha) AS T
+(SELECT DISTINCT m_o.iid, m_o.capacidad, m_o.fecha, sum(m_o.cantidad) AS suma
+FROM m_o
+GROUP BY m_o.iid, m_o.capacidad, m_o.fecha) AS T
 WHERE T.suma < T.capacidad;
-DROP TABLE a_o;
-DROP TABLE a_s;
+DROP TABLE m_o;
+DROP TABLE m_s;
 END;
 $$ language plpgsql;
