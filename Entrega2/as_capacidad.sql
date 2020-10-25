@@ -28,9 +28,9 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
 	END LOOP;
 	END LOOP;
 
-    FOR tupla_random in SELECT FLOOR((RANDOM()*(900)+1000)) 
+    FOR tupla_random in SELECT (FLOOR((RANDOM()*(900)+1000))) as cualquier
     LOOP
-    per_id := tupla_random;
+    per_id := tupla_random.cualquier;
     END LOOP;
     
 ------- Se muestran todas las instalaciones con capacidad y se registra un permiso para el primero disponible
