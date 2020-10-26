@@ -24,10 +24,9 @@ WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
     LOOP
     per_id := tupla_random.cualquier;
     END LOOP;
-END;
     
 ------- Se muestran todas las instalaciones con capacidad y se registra un permiso para el primero disponible
-BEGIN
+
     FOR tupla2 in (SELECT * FROM
 (SELECT DISTINCT m_o.iid, m_o.capacidad, m_o.fecha, sum(m_o.cantidad) AS suma
 FROM m_o
