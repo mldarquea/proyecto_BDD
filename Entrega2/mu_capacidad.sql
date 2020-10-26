@@ -26,6 +26,7 @@ WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
     END LOOP;
     
 ------- Se muestran todas las instalaciones con capacidad y se registra un permiso para el primero disponible
+BEGIN
 DECLARE
     tupla2 RECORD;
     FOR tupla2 in (SELECT * FROM
