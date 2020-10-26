@@ -24,6 +24,7 @@ WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
     LOOP
     per_id := tupla_random.cualquier;
     END LOOP;
+END;
     
 ------- Se muestran todas las instalaciones con capacidad y se registra un permiso para el primero disponible
 BEGIN
