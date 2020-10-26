@@ -17,7 +17,7 @@ FROM instalaciones, muelles, pertenece, puertos WHERE  puertos.pid = pertenece.p
 WHERE para_m.iid = M.iid  and permisos.per_id = para_m.per_id) AS Inter
 					WHERE Inter.atraque  >= $1 and Inter.atraque <= $1 and Inter.nombre = $2
 	LOOP
-	INSERT INTO m_o VALUES(tupla2.iid,tupla2.capacidad, tupla2.atraque, 1);
+	INSERT INTO m_o VALUES(tupla.iid,tupla.capacidad, tupla.atraque, 1);
 	END LOOP;
 
     FOR tupla_random in SELECT (FLOOR((RANDOM()*(900)+1000))) as cualquier
