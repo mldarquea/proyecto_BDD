@@ -34,6 +34,7 @@ WHERE para_a.iid = A.iid and permisos_astilleros.per_id = para_a.per_id and perm
     END LOOP;
     
 ------- Se muestran todas las instalaciones con capacidad y se registra un permiso para el primero disponible
+    
     FOR tupla2 in (SELECT * FROM
 (SELECT DISTINCT a_o.iid, a_o.capacidad, a_o.fecha, sum(a_o.cantidad) AS suma
 FROM a_o
