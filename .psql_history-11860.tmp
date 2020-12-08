@@ -1,0 +1,56 @@
+passwd.
+\password
+\q
+ INSERT INTO istalaciones VALUES(1, 300, Astillero,13);
+ INSERT INTO Istalaciones VALUES(1, 300, Astillero,13);
+ INSERT INTO Instalaciones VALUES(1, 300, Astillero,13);
+INSERT INTO Instalaciones VALUES(1, 300,'Astillero',13);
+INSERT INTO Instalaciones VALUES(1,3, 300, Astillero,13);
+INSERT INTO Instalaciones VALUES(1,3, 300,'Astillero',13);
+INSERT INTO Puertos VALUES(2,"PUERTO A","SAN ANTONIO";"VALPARAÍSO");
+INSERT INTO Puertos VALUES(2,"PUERTO A","SAN ANTONIO","VALPARAÍSO");
+INSERT INTO Puertos VALUES(2,'PUERTO A','SAN ANTONIO';'VALPARAÍSO');
+ INSERT INTO Puertos VALUES(2,'PUERTO A','SAN ANTONIO','VALPARAÍSO');
+SELECT * PuertosSELECT * FROM PuertosINSERT INTO Cierre VALUES(2,3,4,'2013-02-02','2013-02-04');
+INSERT INTO Cierre VALUES(2,3,4,'2013-02-02','2013-02-04');
+SELECT * FROM Cierre;
+INSERTAR INTO Permisos VALUES (1, 2, 2, "2002-04-13", "2002-04-14", "Se descargaron 500 toneladas de autos");
+grupo75e2
+\c grupo75e2
+DROP TABLE Puertos;
+DROP TABLE Puertos;
+\q
+\c grupo75e2
+\dt
+SELECT * FROM Puertos;
+ls
+\q
+\c grupo75e2
+SELECT *FROM AstillerosINTERSECT SELECT *FROM InstalacionesWHERE instalaciones.iid = astilleros.iid;
+SELECT *FROM Instalaciones, Pertenece, PuertosWHERE instalaciones.iid = pertenece.iid and puertos.pid = pertenece.pidINTERSECT SELECT *FROM AstillerosWHERE instalaciones.iid = astilleros.iid;
+(SELECT instalaciones.iid, puertos.pidFROM Instalaciones, Pertenece, PuertosWHERE instalaciones.iid = pertenece.iid and puertos.pid = pertenece.pid)INTERSECT SELECT *FROM AstillerosWHERE instalaciones.iid = astilleros.iid;
+SELECT *FROM Astilleros, Pertenece, PuertosWHERE Astilleros.iid = pertenece.iid and puertos.pid = pertenece.pid;
+SELECT Puertos.pid, Puertos.nombreFROM Astilleros, Pertenece, PuertosWHERE Astilleros.iid = pertenece.iid and puertos.pid = pertenece.pid;
+Select * From puertos;
+SELECT *FROM jefe, personal,(SELECT instalaciones.iid, puertos.nombreFROM puertos, pertenece, instalacionesWHERE puertos.pid = pertenece.pid and instalaciones.iid = pertenece.iid and puertos.nombre = 'Mejillones') AS ppiWHERE jefe.rut = personal.rut and jefe.iid = ppi.iid;
+q
+\q
+SELECT *FROM jefe, personal,(SELECT instalaciones.iid, puertos.nombreFROM puertos, pertenece, instalacionesWHERE puertos.pid = pertenece.pid and instalaciones.iid = pertenece.iid and puertos.nombre = 'Mejillones') AS ppiWHERE jefe.rut = personal.rut and jefe.iid = ppi.iid;
+SELECT* FROM puertos;
+pull
+\q
+\c grupo75
+SELECT * FROM barcos, sobre, permisos, instalaciones (SELECT * FROM para_a UNION SELECT ALL FROM para_m) AS upam WHERE barcos.patente = sobre.patente and sobre.per_id = permisos.per_id and upam.iid = instalaciones.iid;
+SELECT * FROM barcos, sobre, permisos, instalaciones (SELECT * FROM para_a UNION SELECT FROM para_m) AS upam WHERE barcos.patente = sobre.patente and sobre.per_id = permisos.per_id and upam.iid = instalaciones.iid;
+SELECT * FROM barcos, sobre, permisos, instalaciones (SELECT * FROM para_a UNION SELECT * FROM para_m) AS upam WHERE barcos.patente = sobre.patente and sobre.per_id = permisos.per_id and upam.iid = instalaciones.iid;
+SELECT * FROM barcos, sobre, permisos, instalaciones (SELECT * FROM para_a UNION SELECT ALL * FROM para_m) AS upam WHERE barcos.patente = sobre.patente and sobre.per_id = permisos.per_id and upam.iid = instalaciones.iid;
+SELECT * FROM para_a UNION SELECT ALL * FROM para_m;
+\DT
+\dt
+q
+\q
+\c grupo75e2
+SELECT puertos.pid, puertos.nombre, instalaciones.iidFROM puertos, pertenece, instalacionesWHERE puertos.pid = pertenece.pid and pertenece.iid = instalaciones.iid and puertos.pid = 23;
+SELECT ppi.nombre, AVG(personal.edad)  FROM trabaja, personal,(SELECT instalaciones.iid, puertos.nombre  FROM puertos, pertenece, instalaciones  WHERE puertos.pid = pertenece.pid and   instalaciones.iid = pertenece.iid) AS ppi  WHERE trabaja.rut = personal.rut and trabaja.iid = ppi.iid   GROUP BY ppi.nombre;
+SELECT parte2.nombre, COUNT(parte2.nombre) as totalFROM (SELECT parte1.iid, parte1.patente, puertos.nombre, parte1.atraque FROM pertenece, puertos, (SELECT upam.iid, barcos.patente, barcos.pais, permisos.per_id, permisos.atraqueFROM barcos, sobre, permisos, instalaciones,(SELECT * FROM para_a UNION SELECT ALL * FROM para_m) AS upam WHERE barcos.patente = sobre.patente and sobre.per_id = permisos.per_idand upam.iid = instalaciones.iid and permisos.per_id = upam.per_id) AS parte1 WHERE parte1.iid = pertenece.iid and pertenece.pid = puertos.pid) AS parte2GROUP BY parte2.nombreORDER BY total DESC;
+SELECT parte2.nombre, COUNT(parte2.nombre) as totalFROM (SELECT parte1.iid, parte1.patente, puertos.nombre, parte1.atraque FROM pertenece, puertos, (SELECT upam.iid, barcos.patente, barcos.pais, permisos.per_id, permisos.atraqueFROM barcos, sobre, permisos, instalaciones,(SELECT * FROM para_a UNION SELECT ALL * FROM para_m) AS upam WHERE barcos.patente = sobre.patente and sobre.per_id = permisos.per_idand upam.iid = instalaciones.iid and permisos.per_id = upam.per_id and permisos.atraque > '2020-07-31' and permisos.atraque < '2020-09-01' ) AS parte1 WHERE parte1.iid = pertenece.iid and pertenece.pid = puertos.pid) AS parte2GROUP BY parte2.nombreORDER BY total DESC;
